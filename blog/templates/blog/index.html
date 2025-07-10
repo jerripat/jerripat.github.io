@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Blog{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'blog/post.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<section id="welcome">
+    <header>
+        <img src="{% static 'blog/images/spiderman.jpg' %}" alt="the gross blog">
+        <h2>The Gross Blog</h2>
+        <p>This is a blog about the car business and how to win at it.</p>
+    </header>
+</section>
+
+<section id="latest-posts">
+    <header>
+        <h2>Latest Posts</h2>
+    </header>
+    <ul>
+        {% for post in posts %}
+            {% include 'blog/includes/post.html' %}
+        {% endfor %}
+    </ul>
+</section>
+
+<section id="about">
+    <header>
+        <h2>About the Gross Blog</h2>
+    </header>
+    <img src="{% static 'blog/images/castle.jpeg' %}" alt="the gross blog logo">
+    <p>The Gross Blog is a place where we explore the world's most unusual creatures and share our laughs with others.</p>
+</section>
+{% endblock %}
